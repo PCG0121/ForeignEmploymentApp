@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreign Employment Agency</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white min-h-screen text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">Foreign Employment Agency</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-800 hover:text-indigo-600 transition duration-300">Apply</a>
+                <a href="status.html" class="text-gray-800 hover:text-indigo-600 transition duration-300">Check Status</a>
+                <a href="admin.html" class="text-gray-800 hover:text-indigo-600 transition duration-300">Admin</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg p-4">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-indigo-600 transition duration-300">Apply</a>
+            <a href="status.html" class="block py-2 text-gray-800 hover:text-indigo-600 transition duration-300">Check Status</a>
+            <a href="admin.html" class="block py-2 text-gray-800 hover:text-indigo-600 transition duration-300">Admin</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-gray-800 text-center mb-6">Effortless Job Application</h1>
+        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Start your global career journey with us. Fill out the form below, and we'll guide you every step of the way.</p>
+        <form id="application-form" class="max-w-lg mx-auto bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-xl shadow-lg">
+            <div class="mb-6">
+                <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
+                <input type="text" id="full-name" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                <p class="error text-red-500 text-sm hidden mt-1">Please enter your full name.</p>
+            </div>
+            <div class="mb-6">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
+                <input type="email" id="email" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                <p class="error text-red-500 text-sm hidden mt-1">Please enter a valid email address.</p>
+            </div>
+            <div class="mb-6">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number *</label>
+                <input type="tel" id="phone" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                <p class="error text-red-500 text-sm hidden mt-1">Please enter a valid phone number.</p>
+            </div>
+            <div class="mb-6">
+                <label for="nic" class="block text-sm font-medium text-gray-700">NIC Number *</label>
+                <input type="text" id="nic" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                <p class="error text-red-500 text-sm hidden mt-1">Please enter your NIC number.</p>
+            </div>
+            <div class="mb-6">
+                <label for="job-role" class="block text-sm font-medium text-gray-700">Desired Job Role *</label>
+                <input type="text" id="job-role" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                <p class="error text-red-500 text-sm hidden mt-1">Please enter a job role.</p>
+            </div>
+            <div class="mb-6">
+                <label for="country" class="block text-sm font-medium text-gray-700">Desired Country *</label>
+                <select id="country" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                    <option value="" class="text-gray-400">Select a Country</option>
+                    <option value="Japan">Japan</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="Middle East">Middle East</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Other">Other</option>
+                </select>
+                <p class="error text-red-500 text-sm hidden mt-1">Please select a country.</p>
+            </div>
+            <div class="mb-6">
+                <label for="experience" class="block text-sm font-medium text-gray-700">Previous Work Experience (Optional)</label>
+                <textarea id="experience" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300"></textarea>
+            </div>
+            <div class="mb-6">
+                <label for="qualifications" class="block text-sm font-medium text-gray-700">Educational Qualifications (Optional)</label>
+                <textarea id="qualifications" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-700 transition duration-300">Submit Application</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg text-gray-800 text-center p-6">
+        <p>© 2025 Foreign Employment Agency. All rights reserved.</p>
+        <p class="text-gray-600">Connecting talent with global opportunities.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

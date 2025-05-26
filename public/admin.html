@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white min-h-screen text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">Foreign Employment Agency</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-800 hover:text-indigo-600 transition duration-300">Apply</a>
+                <a href="status.html" class="text-gray-800 hover:text-indigo-600 transition duration-300">Check Status</a>
+                <a href="admin.html" class="text-gray-800 hover:text-indigo-600 transition duration-300">Admin</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg p-4">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-indigo-600 transition duration-300">Apply</a>
+            <a href="status.html" class="block py-2 text-gray-800 hover:text-indigo-600 transition duration-300">Check Status</a>
+            <a href="admin.html" class="block py-2 text-gray-800 hover:text-indigo-600 transition duration-300">Admin</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-gray-800 text-center mb-6">Admin Dashboard</h1>
+        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Manage and review job applications and system users efficiently.</p>
+
+        <!-- Application Management -->
+        <div class="max-w-4xl mx-auto bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-xl shadow-lg mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Manage Applications</h2>
+            <div class="flex flex-col md:flex-row gap-6 mb-8">
+                <div class="flex-1">
+                    <label for="search" class="block text-sm font-medium text-gray-700">Search Applications</label>
+                    <input type="text" id="search" placeholder="Search by name or app number" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                </div>
+                <div class="flex-1">
+                    <label for="status-filter" class="block text-sm font-medium text-gray-700">Filter by Status</label>
+                    <select id="status-filter" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                        <option value="">All Statuses</option>
+                        <option value="Submitted">Submitted</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-gray-800">
+                    <thead>
+                        <tr class="bg-white bg-opacity-20">
+                            <th class="p-4">App No.</th>
+                            <th class="p-4">Full Name</th>
+                            <th class="p-4">Desired Job</th>
+                            <th class="p-4">Status</th>
+                            <th class="p-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applications-table">
+                        <tr>
+                            <td colspan="5" class="p-4 text-center">No applications found.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- User Management -->
+        <div class="max-w-4xl mx-auto bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Manage System Users</h2>
+            <form id="user-form" class="mb-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-1">
+                        <label for="user-name" class="block text-sm font-medium text-gray-700">Username *</label>
+                        <input type="text" id="user-name" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                        <p class="error text-red-500 text-sm hidden mt-1">Please enter a username.</p>
+                    </div>
+                    <div class="flex-1">
+                        <label for="user-role" class="block text-sm font-medium text-gray-700">Role *</label>
+                        <select id="user-role" required class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800 focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                            <option value="" class="text-gray-400">Select a Role</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Moderator">Moderator</option>
+                        </select>
+                        <p class="error text-red-500 text-sm hidden mt-1">Please select a role.</p>
+                    </div>
+                </div>
+                <button type="submit" class="mt-6 w-full bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-700 transition duration-300">Add User</button>
+            </form>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-gray-800">
+                    <thead>
+                        <tr class="bg-white bg-opacity-20">
+                            <th class="p-4">Username</th>
+                            <th class="p-4">Role</th>
+                            <th class="p-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table">
+                        <tr>
+                            <td colspan="3" class="p-4 text-center">No users found.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Viewing/Editing Application -->
+    <div id="application-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-xl shadow-lg max-w-lg w-full">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Application Details</h2>
+            <form id="edit-application-form">
+                <input type="hidden" id="edit-app-id">
+                <div class="mb-4">
+                    <label for="edit-full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="edit-full-name" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="edit-email" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="tel" id="edit-phone" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-nic" class="block text-sm font-medium text-gray-700">NIC Number</label>
+                    <input type="text" id="edit-nic" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-job-role" class="block text-sm font-medium text-gray-700">Desired Job Role</label>
+                    <input type="text" id="edit-job-role" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-country" class="block text-sm font-medium text-gray-700">Desired Country</label>
+                    <select id="edit-country" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                        <option value="" class="text-gray-400">Select a Country</option>
+                        <option value="Japan">Japan</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Middle East">Middle East</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="edit-experience" class="block text-sm font-medium text-gray-700">Previous Work Experience</label>
+                    <textarea id="edit-experience" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="edit-qualifications" class="block text-sm font-medium text-gray-700">Educational Qualifications</label>
+                    <textarea id="edit-qualifications" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="edit-status" class="block text-sm font-medium text-gray-700">Status</label>
+                    <select id="edit-status" class="mt-1 block w-full p-3 bg-white bg-opacity-20 border border-gray-300 rounded-md text-gray-800">
+                        <option value="Submitted">Submitted</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-4">
+                    <button type="button" id="close-modal" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition duration-300">Close</button>
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg text-gray-800 text-center p-6">
+        <p>© 2025 Foreign Employment Agency. All rights reserved.</p>
+        <p class="text-gray-600">Connecting talent with global opportunities.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
