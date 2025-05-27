@@ -136,7 +136,6 @@ const express = require('express');
          } catch (err) {
              res.status(500).json({ error: 'Failed to delete user' });
          }
-     }
      });
 
      // Export the app for Vercel
